@@ -1,8 +1,4 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
+
 
 .background {
     background: linear-gradient(to bottom, #16222a, #3a6073);
@@ -19,6 +15,6 @@ body, html {
 }
 
 .firstmap {
-    max-width: 30%;
+    max-width: 50%;
     height: auto;
 }
