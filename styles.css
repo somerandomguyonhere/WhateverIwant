@@ -2,23 +2,44 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; 
+    height: 100vh;
     margin: 0;
+    overflow: hidden; 
 }
 
 .rock {
-    max-width: 100%; 
+    max-width: 100%;
     height: auto;
     cursor: pointer;
+    position: relative; 
 }
 
 .rocktext {
-   text-align: center;
-   margin-top: 10px; 
-   font-size: 1.2em; 
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.2em;
 }
 
 .counter {
-    font-size: 2em; 
-    margin-bottom: 10px; 
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+
+.rock.spinning { 
+    animation: spin 2s linear infinite; 
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
