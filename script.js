@@ -3,11 +3,9 @@ let count = 0;
 const counterElement = document.getElementById('counter');
 const imageElement = document.getElementById('rockclicking');
 
-counterElement.textContent = "Times the rock was clicked: " + count;
-
 imageElement.addEventListener('click', () => {
     count++;
-    counterElement.textContent = "Times the rock was clicked: " + count;
+    counterElement.textContent = count;
     document.cookie = "clickCount=" + count + "; expires=Thu, 31 Dec 9999 23:59:59 UTC; path=/";
 });
 
