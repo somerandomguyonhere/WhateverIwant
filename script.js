@@ -5,7 +5,7 @@ const imageElement = document.getElementById('rockclicking');
 
 imageElement.addEventListener('click', () => {
     count++;
-    counterElement.textContent = count;
+    counterElement.textContent = "Times the rock was clicked: " + count;
     document.cookie = "clickCount=" + count + "; expires=Thu, 31 Dec 9999 23:59:59 UTC; path=/";
 });
 
