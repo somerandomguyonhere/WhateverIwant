@@ -6,9 +6,14 @@ imageElement.addEventListener('click', () => {
     count++;
     counterElement.textContent = count;
     document.cookie = "clickCount=" + count + "; expires=Thu, 31 Dec 9999 23:59:59 UTC; path=/";
-
     if (count >= 1000) {
-        imageElement.classList.add('spinning');
+        startBouncing();
+    } else if (count < 1000 && bouncingInterval) {
+        clearInterval(bouncingInterval);
+        bouncingInterval = null;
+        imageElement.style.position = 'static'; // reset position
+        imageElement.style.left = '0';
+        imageElement.style.top = '0';
     }
 });
 
@@ -25,7 +30,22 @@ window.onload = function() {
         count = parseInt(storedCount);
         counterElement.textContent = count;
         if (count >= 1000) {
-            imageElement.classList.add('spinning');
+            startBouncing();
         }
     }
 };
+
+let bouncingInterval = null;
+
+function startBouncing() {
+    if (bouncingInterval) return; // Already bouncing
+    imageElement.style.position = 'absolute';
+    bouncingInterval = setInterval(() => {
+        const maxX = window.innerWidth - imageElement.offsetWidth;
+        const maxY = window.innerHeight - imageElement.offsetHeight;
+        const newX = Math.random() * maxX;
+        const newY = Math.random() * maxY;
+        imageElement.style.left = newX + 'px';
+        imageElement.style.top = newY + 'px';
+    }, 50); // Adjust interval for bouncing speed
+}
