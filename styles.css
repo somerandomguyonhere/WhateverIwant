@@ -1,45 +1,37 @@
+
 body {
+    overflow: hidden;   
+    margin: 0; 
+    height: 100vh;   
+  align-items: center;  
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    overflow: hidden; 
+    justify-content: center;   
+}
+
+.rockcontainer {
+    position: relative;    
+    text-align: center;   
+    display: flex;  
+    flex-direction: column;    
+    align-items: center;  
+  
 }
 
 .rock {
-    max-width: 100%;
-    height: auto;
-    cursor: pointer;
-    position: relative; 
+    position: absolute;   
+    width: 100px;
+    height: auto;    
+ 
 }
-
-.rocktext {
-    text-align: center;
-    margin-top: 10px;
-    font-size: 1.2em;
+.rockcontainer {
+    position: relative;    
+    display: flex;    
+    flex-direction: column;  
+    align-items: center;  
+  
 }
 
 .counter {
-    font-size: 2em;
-    margin-bottom: 10px;
-}
-
-
-.rock.spinning { 
-    animation: spin 2s linear infinite; 
-    position: absolute; 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
-}
-
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  text-align: center;  
+  margin-bottom: 30px;
 }
