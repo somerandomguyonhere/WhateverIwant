@@ -1,16 +1,138 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-    <title>Click Rock for a surprise</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<title>Guess The Letter</title>
+<style>
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: black;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding-top: 60px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        color: #1E90FF;
+        margin-bottom: 10px;
+    }
+
+    p.note {
+        font-size: 1rem;
+        color: #ccc;
+        max-width: 600px;
+        margin-bottom: 30px;
+    }
+
+    .game-box {
+        border: 2px solid white;
+        padding: 25px;
+        border-radius: 15px;
+        width: 350px;
+        max-width: 90%;
+        background: #111;
+    }
+
+    input {
+        margin-top: 10px;
+        font-size: 28px;
+        width: 60px;
+        height: 50px;
+        text-align: center;
+        border-radius: 10px;
+        border: 2px solid white;
+        background: black;
+        color: white;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        border: 2px solid white;
+        background: transparent;
+        color: white;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s, color 0.3s;
+    }
+
+    button:hover {
+        background: white;
+        color: black;
+    }
+
+    #log {
+        margin-top: 20px;
+        height: 260px;
+        overflow-y: auto;
+        text-align: left;
+        padding: 10px;
+        border: 1px solid #333;
+        background: black;
+        border-radius: 10px;
+        font-size: 1rem;
+    }
+
+    .entry {
+        padding: 6px 0;
+        border-bottom: 1px solid #222;
+    }
+
+    .wrong {
+        color: red;
+    }
+
+    footer {
+        margin-top: 40px;
+        color: #888;
+        font-size: 0.85rem;
+    }
+</style>
 </head>
 <body>
-    <div class="rockcontainer">
-        <img src="https://raw.githubusercontent.com/somerandomguyonhere/WhateverIwant/main/images.png" class="rock" id="rockclicking">
-  </div>
-  <div class="counter" id="counter">0</div>
-   
-    <script src="script.js"></script>
+
+<h1>GUESS THE LETTER</h1>
+
+<div class="game-box">
+    <input id="guess" maxlength="1" autofocus>
+    <br>
+    <button onclick="submitGuess()">Submit Guess</button>
+
+    <div id="log"></div>
+</div>
+
+<script>
+
+function submitGuess() {
+    const input = document.getElementById("guess");
+    const log = document.getElementById("log");
+    const letter = input.value.toLowerCase();
+
+
+    addToLog(`You guessed "${letter}" which is WRONG!`, "wrong");
+
+    input.value = "";
+    input.focus();
+}
+
+function addToLog(message, type) {
+    const log = document.getElementById("log");
+    const entry = document.createElement("div");
+    entry.className = "entry " + type;
+    entry.textContent = message;
+    log.appendChild(entry);
+    log.scrollTop = log.scrollHeight;
+}
+</script>
+
 </body>
 </html>
